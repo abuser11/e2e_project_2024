@@ -37,9 +37,9 @@ The dataset contains various columns of information related to real estate prope
 
 **Examples of Visualization (clustering):**
 
-![alt text](https://github.com/Rozmanov423/e2e23flask_super_final/blob/main/images/vis.png)
+![alt text](https://github.com/abuser11/e2e_project_2024/blob/master/images/model.png)
 
-**After preprocessing of the data I create the model itself, as a metric of the algorythm performance I choose MSE. The best scaling techincue and ML algorythm are Standard Scaling and DecisionTreeRegressor**
+After preprocessing of the data we created the model itself, as a metric of the algorithm performance MSE was chosen. The best scaling techincue and ML algorithm are **Standard Scaling** and __DecisionTreeRegressor__ 
 
 ```
 sc_X = StandardScaler()
@@ -53,7 +53,7 @@ y_valid = sc_y.fit_transform(y_valid)
 dt = DecisionTreeRegressor(max_depth=40, min_samples_leaf=15, max_features=4, min_samples_split=2, splitter = 'best')
 ```	
 
-**To find optimal hyperparametrs for the model I used RandomizedSearchCV algorythm:**
+**To find optimal hyperparametrs for the model RandomizedSearchCV approach was used:**
 
 ```
 param_dist = {
@@ -83,15 +83,25 @@ print('MSE:', mse)
 print('RMSE:', rmse)
 ```	
 
-**Best parameters**: {'splitter': 'best', 'random_state': 42, 'min_weight_fraction_leaf': 0.0, 'min_samples_split': 2, 'min_samples_leaf': 15, 'max_features': 4, 'max_depth': 40, 'criterion': 'mse'}
-
-**MAE**: 0.35
-**MSE**: 0.38
-**RMSE**: 0.62
+**Best parameters**: 
+- 'splitter': 'best', 
+- 'random_state': 7, 
+- 'min_weight_fraction_leaf': 0.0, 
+- 'min_samples_split': 2, 
+- 'min_samples_leaf': 15, 
+- 'max_features': 4,
+- 'max_depth': 40,
+- 'criterion': 'mse'
+---
+And the results for the model:
+- **MAE**: 0.35
+- **MSE**: 0.38
+- **RMSE**: 0.62
+---
 
 **Model prediction on the data:**
 
-![alt text](https://github.com/Rozmanov423/e2e23flask_super_final/blob/main/images/model.png)
+![alt text](https://github.com/abuser11/e2e_project_2024/blob/master/images/model.png)
 
 <h2> Additional information </h2>
 
@@ -100,19 +110,19 @@ print('RMSE:', rmse)
 You may connect to may virtual machine using following username and IP:
 
 ```	
-ssh st110528@84.201.176.14
+ssh osanov@51.250.99.187
 ```	
 
 The Dockerfile content/algorythm of actions:
 
 ```	
-FROM ubuntu:20.04
-MAINTAINER Aleksandr Rozmanov
+FROM ubuntu:22.04
+MAINTAINER Artem Osanov
 RUN apt-get update -y
-COPY  . /opt/gsom_predictor
+COPY . /opt/gsom_predictor
 WORKDIR /opt/gsom_predictor
 RUN apt install -y python3-pip
-RUN pip3 install -r requirments.txt
+RUN pip3 install -r requirements.txt
 CMD python3 app.py
 ```	
 **Information about remote machine:**
@@ -129,9 +139,9 @@ Then build and run the docker container
 
 ```	
 #My image:
-#st110528/e2e23_class_predictor:v.0.1 .
+#osanov/gsom_e2e_2024:v.0.1
 
-#Basic algorythm:
+#Basic algorithm:
 docker build -t <your login>/<directory name>:<version> .     
 docker run --network host -it <your login>/<directory name>:<version> /bin/bash
 docker run --network host -d <your login>/<directory name>:<version>   
