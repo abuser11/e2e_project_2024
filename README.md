@@ -37,7 +37,8 @@ The dataset contains various columns of information related to real estate prope
 
 **Examples of Visualization (clustering):**
 
-![alt text](https://github.com/abuser11/e2e_project_2024/blob/master/images/model.png)
+![alt text](https://github.com/abuser11/e2e_project_2024/blob/master/images/plot1.png)
+![alt text](https://github.com/abuser11/e2e_project_2024/blob/master/images/plot2.png)
 
 After preprocessing of the data we created the model itself, as a metric of the algorithm performance MSE was chosen. The best scaling techincue and ML algorithm are **Standard Scaling** and __DecisionTreeRegressor__ 
 
