@@ -27,7 +27,7 @@ The dataset contains various columns of information related to real estate prope
 
 <h2> Work description </h2>
 
-**[lab1_1_EDA_Aleksandr_Rozmanov.ipynb](https://github.com/abuser11/e2e_project_2024/blob/master/notebooks/lab1_1_EDA_and_Visualzation.ipynb) contains the preprocesing, data cleaning from outliers and EDA of the real estate dataset. Besides, it answers following questions:**
+**[lab1_EDA_and_Visualization.ipynb](https://github.com/abuser11/e2e_project_2024/blob/master/notebooks/lab1_1_EDA_and_Visualzation.ipynb) contains the preprocesing, data cleaning from outliers and EDA of the real estate dataset. Besides, it answers following questions:**
 
 1. Calculate median and mean prices for apartments for rent after cleaning the data in St.Petersburg without Leningrad Oblast. Which of the statistics changed more and why?
 2. Calculate median and mean prices for apartments for sell before cleaning the data.
