@@ -1,23 +1,27 @@
-<h2> St. Petersburg Real Estate Price Prediction </h2>
+<h2> Final Project: Yandex Real Estate Price Prediction
+ </h2>
 
-![alt text](https://github.com/Rozmanov423/e2e23flask_super_final/blob/main/images/real_estate.jpg)
+![alt text](https://github.com/abuser11/e2e_project_2024/blob/master/images/spb_resal_estate.jpg)
 
-**We have a  dataset containing various columns of information related to real estate properties. These columns include:**
+**Dataset Description:**
 
-1. Last Price: The most recent price at which the property was listed or sold.
-2. Floor: The floor number on which the property is located.
-3. Rooms: The number of rooms available in the property.
-4. Area: The total area or size of the property.
-5. Kitchen Area: The area specifically designated for the kitchen within the property.
-6. Living Area: The area intended for living spaces such as the living room, bedrooms, etc.
-7. Agent Fee: The fee charged by the agent or agency involved in the property transaction.
-8. Renovation: Indicates whether the property has undergone any recent renovations or improvements.
-9. Building ID: An identifier associated with the specific building or property.
+The dataset contains various columns of information related to real estate properties:
 
+1. **Last Price:** The most recent price at which the property was listed or sold.
+2. **Floor:** The floor number on which the property is located.
+3. **Rooms:** The number of rooms available in the property.
+4. **Area:** The total area or size of the property.
+5. **Kitchen Area:** The area specifically designated for the kitchen within the property.
+6. **Living Area:** The area intended for living spaces such as the living room, bedrooms, etc.
+7. **Agent Fee:** The fee charged by the agent or agency involved in the property transaction.
+8. **Renovation:** Indicates whether the property has undergone any recent renovations or improvements.
+9. **Building ID:** An identifier associated with the specific building or property.
 
-**The Dataset for the project:**
- 
+***
+**Data used for the project:**
+
 [St. Petersb and Leningrad Oblast data (2016-2018)](https://github.com/Rozmanov423/e2e23flask_super_final/blob/main/spb.real.estate.archive.sample5000.tsv)
+***
 
 <h2> Work description </h2>
 
