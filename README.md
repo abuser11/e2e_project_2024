@@ -20,20 +20,22 @@ The dataset contains various columns of information related to real estate prope
 ***
 **Data used for the project:**
 
-[St. Petersb and Leningrad Oblast data (2016-2018)](https://github.com/Rozmanov423/e2e23flask_super_final/blob/main/spb.real.estate.archive.sample5000.tsv)
+* [St. Petersb and Leningrad Oblast data (2016-2018)](https://github.com/abuser11/e2e_project_2024/blob/master/data/spb.real.estate.archive.sample5000.tsv)
+
+* [Cleaned Data](https://github.com/abuser11/e2e_project_2024/blob/master/data/cleaned_dataset.csv)
 ***
 
 <h2> Work description </h2>
 
-**[lab1_1_EDA_Aleksandr_Rozmanov.ipynb](https://github.com/Rozmanov423/e2e23flask_super_final/blob/main/lab1_1_EDA_Aleksandr_Rozmanov.ipynb) contains the preprocesing and EDA of real estate dataset. Besides, it answers following questions:**
+**[lab1_1_EDA_Aleksandr_Rozmanov.ipynb](https://github.com/abuser11/e2e_project_2024/blob/master/notebooks/lab1_1_EDA_and_Visualzation.ipynb) contains the preprocesing, data cleaning from outliers and EDA of the real estate dataset. Besides, it answers following questions:**
 
 1. Calculate median and mean prices for apartments for rent after cleaning the data in St.Petersburg without Leningrad Oblast. Which of the statistics changed more and why?
 2. Calculate median and mean prices for apartments for sell before cleaning the data.
-2. Find houses with the most cheapest and most expensive price per sq m in St. Petersburg without Leningrad Oblast after cleaning outliers.
-3. Find the most expensive and the most cheapest apartment in St. Petersburg after cleaning outliers.
-4. Calculate how many years does it take to cover all money spent on buying apartment by renting it. Find houses in which it's the most effective to invest in buying if you plan to rent and houses in which it will be the most ineffective.
+3. Find houses with the most cheapest and most expensive price per sq m in St. Petersburg without Leningrad Oblast after cleaning outliers.
+4. Find the most expensive and the most cheapest apartment in St. Petersburg after cleaning outliers.
+5. Calculate how many years does it take to cover all money spent on buying apartment by renting it. Find houses in which it's the most effective to invest in buying if you plan to rent and houses in which it will be the most ineffective.
 
-**Example of Visualization (clustering):**
+**Examples of Visualization (clustering):**
 
 ![alt text](https://github.com/Rozmanov423/e2e23flask_super_final/blob/main/images/vis.png)
 
