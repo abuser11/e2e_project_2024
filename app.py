@@ -15,7 +15,7 @@ sc_y = joblib.load(SCALER_Y_PATH)
 @app.route('/predict_price', methods = ['GET'])
 def predict():  # put application's code here
     args = request.args
-    open_plan = args.get('open_plan', default=-1, type=binary)
+    open_plan = args.get('open_plan', default=-1, type=int)
     house_price_sqm_median = args.get('house_price_sqm_median', default=-1, type=float)
     lving_area = args.get('lving_area', default=-1, type=float)
     rooms = args.get('rooms', default=-1, type=int)
