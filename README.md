@@ -103,6 +103,8 @@ And the results for the model:
 **Model prediction on the data:**
 
 ![alt text](https://github.com/abuser11/e2e_project_2024/blob/master/images/model.png)
+![alt text](https://github.com/abuser11/e2e_project_2024/blob/master/images/model2.png)
+
 
 <h2> Additional information </h2>
 
