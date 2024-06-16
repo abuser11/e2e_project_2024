@@ -40,7 +40,14 @@ The dataset contains various columns of information related to real estate prope
 ![alt text](https://github.com/abuser11/e2e_project_2024/blob/master/images/plot1.png)
 ![alt text](https://github.com/abuser11/e2e_project_2024/blob/master/images/plot2.png)
 
-After preprocessing of the data we created the model itself, as a metric of the algorithm performance MSE was chosen. The best scaling techincue and ML algorithm are **Standard Scaling** and __DecisionTreeRegressor__ 
+After preprocessing of the data we created the model itself, as a metric of the algorithm performance MSE, MAE and R-squared were chosen. I used 4 models to identify the best one for our prediction case: __Decsion Tree__, __Random Forest__, __Logistic Regression__ and __XGBoost__. Eventually, __XGBoost__ resulted in better evaluation metric results and chosen as a ML model. 
+
+| Model             | Mean Squared Error (MSE) | Mean Absolute Error (MAE) | R-squared (R²) |
+|-------------------|--------------------------|---------------------------|----------------|
+| Linear Regression | 0.1980                   | 0.2692                    | 0.8007         |
+| Decision Tree     | 0.2895                   | 0.3122                    | 0.7087         |
+| Random Forest     | 0.1557                   | 0.2307                    | 0.8434         |
+| XGBoost           | 0.1557                   | 0.2260                    | 0.8433         |
 
 ```
 sc_X = StandardScaler()
@@ -57,47 +64,48 @@ dt = DecisionTreeRegressor(max_depth=40, min_samples_leaf=15, max_features=4, mi
 **To find optimal hyperparametrs for the model RandomizedSearchCV approach was used:**
 
 ```
-param_dist = {
-    'max_depth': [10, 15, 20, 25, 30, 40, 50, 60, 70],
-    'min_samples_leaf': [5, 10, 15, 20, 25, 30, 35, 40],
-    'max_features': [2, 3, 4],
-    'min_samples_split': [2, 3, 4, 5, 6, 7],
-    'splitter': ['best', 'random'],
-    'criterion': ['mse', 'mae'],
-    'min_weight_fraction_leaf': [0.0, 0.1, 0.2],
+
+param_dist_xgb = {
+    'n_estimators': [50, 100, 200, 300],
+    'learning_rate': uniform(0.01, 0.3),  # Uniform distribution between 0.01 and 0.31
+    'max_depth': [3, 4, 5, 6, 7, 8, 9, 10],
+    'subsample': uniform(0.6, 0.4),       # Uniform distribution between 0.6 and 1.0
+    'colsample_bytree': uniform(0.6, 0.4) # Uniform distribution between 0.6 and 1.0
 }
 
+xgb_model = XGBRegressor(random_state=7)
 
-dt = DecisionTreeRegressor()
-random_search = RandomizedSearchCV(dt, param_dist, n_iter=50, scoring='neg_mean_squared_error', cv=5)
-random_search.fit(X_train, y_train)
-best_model = random_search.best_estimator_
+# Initialize RandomizedSearchCV
+random_search_xgb = RandomizedSearchCV(estimator=xgb_model, 
+                                       param_distributions=param_dist_xgb, 
+                                       n_iter=100, 
+                                       cv=3, 
+                                       scoring='neg_mean_squared_error', 
+                                       n_jobs=-1, 
+                                       random_state=7)
 
-predictions = best_model.predict(X_valid)
-mae = mean_absolute_error(y_valid, predictions)
-mse = mean_squared_error(y_valid, predictions)
-rmse = np.sqrt(mse)
+xgb_model = XGBRegressor(**random_search_xgb.best_params_, random_state=7)
 
-print('Best parameters:', random_search.best_params_)
-print('MAE:', mae)
-print('MSE:', mse)
-print('RMSE:', rmse)
+# Fit the model on the training data
+xgb_model.fit(X_train, y_train)
+
+# Predict on the test set
+y_pred = xgb_model.predict(X_valid)
+
+# Evaluate the model
+mse = mean_squared_error(y_valid, y_pred)
+mae = mean_absolute_error(y_valid, y_pred)
+r2 = r2_score(y_valid, y_pred)
+
+print(f'XGBoost Mean Squared Error: {mse}')
+print(f'XGBoost Mean Absolute Error: {mae}')
+print(f'XGBoost R-squared: {r2}')
 ```	
 
-**Best parameters**: 
-- 'splitter': 'best', 
-- 'random_state': 7, 
-- 'min_weight_fraction_leaf': 0.0, 
-- 'min_samples_split': 2, 
-- 'min_samples_leaf': 15, 
-- 'max_features': 4,
-- 'max_depth': 40,
-- 'criterion': 'mse'
----
 And the results for the model:
-- **MAE**: 0.35
-- **MSE**: 0.38
-- **RMSE**: 0.62
+`__XGBoost Mean Squared Error:__` 0.15448476066318395
+`__XGBoost Mean Absolute Error:__` 0.2246441019456237
+`__XGBoost R-squared:__` 0.845515239336816
 ---
 
 **Model prediction on the data:**
@@ -113,7 +121,7 @@ And the results for the model:
 You may connect to may virtual machine using following username and IP:
 
 ```	
-ssh osanov@51.250.99.187
+ssh osanov@51.250.23.163
 ```	
 
 The Dockerfile content/algorythm of actions:
@@ -142,7 +150,7 @@ Then build and run the docker container
 
 ```	
 #My image:
-#osanov/gsom_e2e_2024:v.0.1
+#osanov/e2e_2024:v.0.7
 
 #Basic algorithm:
 docker build -t <your login>/<directory name>:<version> .     
