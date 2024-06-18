@@ -16,10 +16,10 @@ sc_y = joblib.load(SCALER_Y_PATH)
 def predict():  # put application's code here
     args = request.args
     open_plan = args.get('open_plan', default=-1, type=int)
-    house_price_sqm_median = args.get('house_price_sqm_median', default=-1, type=float)
     lving_area = args.get('lving_area', default=-1, type=float)
     rooms = args.get('rooms', default=-1, type=int)
     area = args.get('area', default=-1, type=float)
+    renovation = args.get('renovation', default=-1, type=float)
     days_published = args.get('days_published', default=-1, type=int)
 
     x = numpy.array([open_plan, rooms, area, house_price_sqm_median, lving_area, days_published]).reshape(1,-1)
