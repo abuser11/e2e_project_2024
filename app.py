@@ -22,7 +22,7 @@ def predict():  # put application's code here
     renovation = args.get('renovation', default=-1, type=float)
     days_published = args.get('days_published', default=-1, type=int)
 
-    x = numpy.array([open_plan, rooms, area, house_price_sqm_median, lving_area, days_published]).reshape(1,-1)
+    x = numpy.array([open_plan, rooms, area, renovation, lving_area, days_published]).reshape(1,-1)
     x = sc_x.transform(x)
     result = model.predict(x)
     result = sc_y.inverse_transform(result.reshape(1,-1))
